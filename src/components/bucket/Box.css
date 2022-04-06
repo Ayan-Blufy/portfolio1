@@ -1,0 +1,22 @@
+.bag{
+   transition: all 0.4s ease-in-out;
+
+}
+
+.bag:hover{
+    
+
+    box-shadow: rgba(0, 0, 0, 0.733) 0px 5px 15px;
+   
+}
+
+.box_col{
+    background-color: #242d3d;
+}
+
+.bucket{
+   width: 100%;
+   display: grid;
+
+
+}
