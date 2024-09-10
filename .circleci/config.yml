@@ -2,6 +2,7 @@ version: 2.1
 
 jobs:
   build:
+    working_directory: ~/project/portfolio
     docker:
       - image: cimg/node:14.17
     steps:
@@ -9,7 +10,8 @@ jobs:
           name: The First Step
           command: |
             echo 'Hello World!'
-            echo 'This is the delivery pipeline'
+            ls -al
+            pwd
 
    
 
