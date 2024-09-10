@@ -17,11 +17,23 @@ jobs:
             ls
 
    
+  test:
+    working_directory: ~/project/portfolio
+    docker:
+      - image: cimg/node:14.17
+    steps:
+      - checkout
+      - run:
+          name: The Second Step
+          command: npm run test
 
 workflows:
-  prac_build:
+  build_test:
     jobs:
       - build
+      - test:
+            requires:
+              - build 
 
 
 
