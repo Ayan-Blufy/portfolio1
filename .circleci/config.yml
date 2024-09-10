@@ -22,7 +22,7 @@ jobs:
       - checkout
       - install_dependencies
       - run : |
-         yarn intall serve
+         yarn add serve
          npm run build
 
 workflows:
