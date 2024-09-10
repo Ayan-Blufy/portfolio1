@@ -12,7 +12,7 @@ jobs:
             echo 'Hello World!'
             ls -al
             pwd
-            cd circle/project/portfolio
+            cd circleci/project/portfolio
             ls
 
    
