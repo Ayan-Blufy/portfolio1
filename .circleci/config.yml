@@ -6,7 +6,8 @@ jobs:
     docker:
       - image: cimg/node:14.17
     steps:
-     - run:
+      - checkout
+      - run:
           name: The First Step
           command: |
             echo 'Hello World!'
