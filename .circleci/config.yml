@@ -13,7 +13,7 @@ executors:
     parameters:
       to:
         type: "string"
-        default: "14.17"
+        default: "lts"
 
 jobs:
   build:
