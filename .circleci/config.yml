@@ -23,7 +23,7 @@ jobs:
       - install_dependencies
       - run : |
          yarn add serve
-         npm run build
+         yarn run build
 
 workflows:
   build:
