@@ -12,6 +12,8 @@ jobs:
             echo 'Hello World!'
             ls -al
             pwd
+            cd ~/project/portfolio
+            ls -al
 
    
 
