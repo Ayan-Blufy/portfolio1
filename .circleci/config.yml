@@ -4,7 +4,7 @@ commands:
   install_dependencies:
     description: "Install dependencies"
     steps:
-      - run: npm install
+      - run: yarn install
 executors:
   default:
     docker:
@@ -21,7 +21,9 @@ jobs:
     steps:
       - checkout
       - install_dependencies
-      - run: npm run build
+      - run: |
+          - yarn intall serve
+          - npm run build
 
 workflows:
   build:
