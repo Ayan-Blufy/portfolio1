@@ -1,32 +1,29 @@
 version: 2.1
 
+commands:
+  install_dependencies:
+    description: "Install dependencies"
+    steps:
+      - run: npm install
 executors:
-  my-executor:
-    parameters:
-      version:
-        type: string
-        default: "14.17"
+  default:
     docker:
-      - image: cimg/node:<< parameters.version >>
+      - image: cimg/node:<<parameters.to>>
+    working_directory: ~/project
+    parameters:
+      to:
+        type: "string"
+        default: "14.17"
 
 jobs:
   build:
-    executor: my-executor
+    executor: default
     steps:
-      - run: echo "Hello executor!"
-   
-  test:
-    executor: my-executor
-    steps:
-      - run: echo "Hello executor!"
+      - checkout
+      - install_dependencies
+      - run: npm run build
 
 workflows:
-  build_test:
+  build:
     jobs:
       - build
-      - test:
-            requires:
-              - build 
-
-
-
