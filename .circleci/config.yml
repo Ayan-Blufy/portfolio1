@@ -21,9 +21,9 @@ jobs:
     steps:
       - checkout
       - install_dependencies
-      - run: |
-          - yarn intall serve
-          - npm run build
+      - run : |
+         yarn intall serve
+         npm run build
 
 workflows:
   build:
