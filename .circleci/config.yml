@@ -30,7 +30,7 @@ jobs:
           name: Build application
           command: |
             mkdir -p output
-            cat "Compiled code" > output/test.txt
+            echo "Compiled code" | cat > output/test.txt
       - persist_to_workspace:
           root: output
           paths:
