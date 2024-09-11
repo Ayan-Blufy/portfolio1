@@ -25,13 +25,13 @@ jobs:
       - image: cimg/node:14.17
     steps:
       - attach_workspace:
-          at: .
+          at: ~/
       - run:
           name: Run tests
           command: |
             echo "Running tests..."
             pwd
-            cd project
+            cd ..
             ls -la
 
 
