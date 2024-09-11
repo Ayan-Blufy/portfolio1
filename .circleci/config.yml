@@ -32,7 +32,8 @@ jobs:
             echo "Running tests..."
             pwd
             ls -la
-           
+            cd workspace
+            ls -la
 
 workflows:
   version: 2
