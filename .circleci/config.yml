@@ -34,12 +34,19 @@ jobs:
             cd ..
             ls -la
 
-
 workflows:
   version: 2
-  build_and_test:
+  build:
+   jobs:
+    - build
+
+  test:
+    triggers:
+      - schedule:
+          cron:  "/5 * * * *" # every 5 minutes"
+          filters:
+            branches:
+              only:
+                - master
     jobs:
-      - build
-      - test:
-          requires:
-            - build
+    - test
