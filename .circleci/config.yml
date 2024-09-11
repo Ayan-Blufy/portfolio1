@@ -16,7 +16,7 @@ jobs:
             mkdir -p output
             echo "Compiled code" > output/test.txt
       - persist_to_workspace:
-          root: output
+          root: ~/
           paths:
             - test.txt
 
@@ -25,13 +25,13 @@ jobs:
       - image: cimg/node:14.17
     steps:
       - attach_workspace:
-          at: /output
+          at: ~/
       - run:
           name: Run tests
           command: |
             echo "Running tests..."
             pwd
-            cat /output/test.txt
+            cat test.txt
 
 workflows:
   version: 2
