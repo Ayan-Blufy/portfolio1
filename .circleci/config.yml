@@ -31,12 +31,8 @@ jobs:
           command: |
             echo "Running tests..."
             pwd
-            ls -la
-            cd workspace
-            ls -la
-            cd output
-            ls
-            
+            cat /workspace/output/test.txt
+
 
 workflows:
   version: 2
