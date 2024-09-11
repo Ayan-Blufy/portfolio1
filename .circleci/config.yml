@@ -42,7 +42,7 @@ workflows:
   schedule_cron:
     triggers:
       - schedule:
-          cron: "0 0 * * *"  # Every day at midnight UTC
+          cron: "0 2 * * *"  # Every day at midnight UTC
           filters:
             branches:
               only:
