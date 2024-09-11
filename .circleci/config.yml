@@ -31,9 +31,8 @@ jobs:
           command: |
             echo "Running tests..."
             pwd
-            cat /workspace/output/test.txt
-            cd /workspace/output/test.txt
-            pwd
+            ls -la
+           
 
 workflows:
   version: 2
