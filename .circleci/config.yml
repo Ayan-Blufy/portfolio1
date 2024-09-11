@@ -1,62 +1,40 @@
 version: 2.1
 
-commands:
-  install_dependencies:
-    description: "Install dependencies"
-    steps:
-      - run: yarn install
-executors:
-  default:
-    docker:
-      - image: cimg/node:<<parameters.to>>
-    working_directory: ~/project
-    parameters:
-      to:
-        type: "string"
-        default: "lts"
-
-
 jobs:
   build:
     docker:
-      - image: cimg/node:<<parameters.to>>
+      - image: circleci/python:3.8
     steps:
       - checkout
       - run:
           name: Install dependencies
           command: |
-            yarn install
+            pip install -r requirements.txt
       - run:
           name: Build application
           command: |
             mkdir -p output
-            echo "Compiled code" | cat > output/test.txt
+            echo "Compiled code" > output/application.zip
       - persist_to_workspace:
           root: output
           paths:
-            - test.txt
-    parameters:
-      to:
-        type: "string"
-        default: "lts"
+            - application.zip
+
   test:
     docker:
-      - image: cimg/node:<<parameters.to>>
+      - image: circleci/python:3.8
     steps:
       - attach_workspace:
-          at: /output
+          at: /workspace
       - run:
           name: Run tests
           command: |
             echo "Running tests..."
             pwd
-            cat /output/test.txt
-    parameters:
-      to:
-        type: "string"
-        default: "lts"
+            cat /workspace/application.zip
 
 workflows:
+  version: 2
   build_and_test:
     jobs:
       - build
