@@ -15,17 +15,51 @@ executors:
         type: "string"
         default: "lts"
 
+
 jobs:
   build:
-    executor: default
+    docker:
+      - image: cimg/node:<<parameters.to>>
     steps:
       - checkout
-      - install_dependencies
-      - run : |
-         yarn add serve
-         yarn run build
+      - run:
+          name: Install dependencies
+          command: |
+            pip install -r requirements.txt
+      - run:
+          name: Build application
+          command: |
+            mkdir -p output
+            cat "Compiled code" > output/test.txt
+      - persist_to_workspace:
+          root: output
+          paths:
+            - test.txt
+    parameters:
+      to:
+        type: "string"
+        default: "lts"
+  test:
+    docker:
+      - image: cimg/node:<<parameters.to>>
+    steps:
+      - attach_workspace:
+          at: /workspace
+      - run:
+          name: Run tests
+          command: |
+            echo "Running tests..."
+            pwd
+            cat /workspace/test.txt
+    parameters:
+      to:
+        type: "string"
+        default: "lts"
 
 workflows:
-  build:
+  build_and_test:
     jobs:
       - build
+      - test:
+          requires:
+            - build
