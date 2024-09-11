@@ -44,13 +44,13 @@ jobs:
       - image: cimg/node:<<parameters.to>>
     steps:
       - attach_workspace:
-          at: /workspace
+          at: /output
       - run:
           name: Run tests
           command: |
             echo "Running tests..."
             pwd
-            cat /workspace/test.txt
+            cat /output/test.txt
     parameters:
       to:
         type: "string"
