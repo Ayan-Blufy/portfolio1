@@ -16,9 +16,9 @@ jobs:
             mkdir -p output
             echo "Compiled code" > output/test.txt
       - persist_to_workspace:
-          root: output
+          root: .
           paths:
-            - test.txt
+            - output
 
   test:
     docker:
@@ -31,7 +31,9 @@ jobs:
           command: |
             echo "Running tests..."
             pwd
-            cat test.txt
+            cat /workspace/output/test.txt
+            cd /workspace/output/test.txt
+            pwd
 
 workflows:
   version: 2
