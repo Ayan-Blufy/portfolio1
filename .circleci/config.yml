@@ -3,26 +3,26 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/python:3.8
+      - image: cimg/node:14.17
     steps:
       - checkout
       - run:
           name: Install dependencies
           command: |
-            pip install -r requirements.txt
+            yarn install
       - run:
           name: Build application
           command: |
             mkdir -p output
-            echo "Compiled code" > output/application.zip
+            echo "Compiled code" > output/test.txt
       - persist_to_workspace:
           root: output
           paths:
-            - application.zip
+            - test.txt
 
   test:
     docker:
-      - image: circleci/python:3.8
+      - image: cimg/node:14.17
     steps:
       - attach_workspace:
           at: /workspace
@@ -31,7 +31,7 @@ jobs:
           command: |
             echo "Running tests..."
             pwd
-            cat /workspace/application.zip
+            cat /workspace/test.txt
 
 workflows:
   version: 2
