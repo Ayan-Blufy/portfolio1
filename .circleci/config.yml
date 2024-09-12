@@ -39,14 +39,3 @@ workflows:
   build:
    jobs:
     - build
-  schedule_cron:
-    triggers:
-      - schedule:
-          cron: "0 * * * *"  # Every 5 minutes
-          filters:
-            branches:
-              only:
-                - master
-    
-    jobs:
-      - test
