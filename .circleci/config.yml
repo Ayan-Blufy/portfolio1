@@ -16,7 +16,7 @@ jobs:
             mkdir -p output
             echo "Compiled code" > output/test.txt
       - persist_to_workspace:
-          root: ~/
+          root: .
           paths:
             - output
 
