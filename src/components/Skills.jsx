@@ -74,7 +74,7 @@ const Skills = () => {
 
                 <div class="max-w-5xl mx-auto px-6 lg:px-0">
                     <header class="mb-16">
-                        <h3 class="text-4xl font-poppins text-blue-200 font-extrabold"><span class="text-green-300 text-xl mr-3">03.</span><span class="font-bold"></span>Some Things I've Built</h3>
+                        <h3 class="text-4xl font-poppins text-blue-200 font-extrabold"><span class="text-green-300 text-xl mr-3">04.</span><span class="font-bold"></span>Some Things I've Built</h3>
                     </header>
 
                     <div data-aos="fade-up" className="">
