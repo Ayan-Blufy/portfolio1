@@ -1,16 +1,28 @@
 version: 2.1
 
-jobs:
-  build:
+executors:
+  default:
     docker:
       - image: cimg/node:21.7.2
+
+jobs:
+  build:
+    executor: default
     steps:
       - checkout
       - run: node -v
+      - run: npm -v
+      - run: npm install
 
+  test:
+    executor: default
+    steps:
+      - checkout
+      - run: node -v
+      - run: npm -v
+      - run: npm test
 workflows:
   version: 2
   build-master:
     jobs:
       - build
-
