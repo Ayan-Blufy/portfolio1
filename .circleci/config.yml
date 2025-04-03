@@ -26,3 +26,6 @@ workflows:
   build-master:
     jobs:
       - build
+      - test:
+          requires:
+            - build
